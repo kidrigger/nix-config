@@ -16,6 +16,7 @@
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
+    inputs.home-manager.nixosModules.home-manager
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -74,6 +75,7 @@
   # TODO: This is just an example, be sure to use whatever bootloader you prefer
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
@@ -109,6 +111,13 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "networkmanager"];
+    };
+  };
+
+  home-manager = {
+    extraSpecialArgs = {inherit inputs outputs; };
+    users = {
+      equiomax = import ../home-manager/home.nix;
     };
   };
 
