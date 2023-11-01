@@ -55,6 +55,9 @@
   home = {
     username = "equiomax";
     homeDirectory = "/home/equiomax";
+    packages = with pkgs; [
+      
+    ];
   };
 
   # Add stuff for your user as you see fit:
@@ -70,9 +73,20 @@
     };
   };
 
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.mpv.enable = true;
+
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Amit Chauhan";
+    userEmail = "aschauhan@tutanota.com";
+  };
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
