@@ -97,6 +97,8 @@
     LC_TIME = "en_IN";
   };
 
+  programs.zsh.enable = true;
+  
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username
@@ -106,6 +108,7 @@
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "Nix";
       isNormalUser = true;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
@@ -113,6 +116,7 @@
       extraGroups = ["wheel" "networkmanager"];
     };
   };
+
 
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs; };

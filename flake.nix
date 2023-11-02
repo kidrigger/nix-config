@@ -61,7 +61,7 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # FIXME replace with your hostname
-      equiomax-g15 = nixpkgs.lib.nixosSystem {
+      equiomax-g15 = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <

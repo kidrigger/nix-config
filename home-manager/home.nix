@@ -73,10 +73,20 @@
     };
   };
 
+  home.sessionVariables.EDITOR = "hx";
+
+  programs.zsh = {
+    enable = true;
+    # syntaxHighlighting.enable = true;
+  };
+
+  programs.bash.enable = true;
+
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
-    settings = pkgs.lib.importTOML = ./starship.toml;
+    enableZshIntegration = true;
+    settings = pkgs.lib.importTOML ./starship.toml;
   };
 
   programs.mpv.enable = true;
