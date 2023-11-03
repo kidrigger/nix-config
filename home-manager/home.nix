@@ -56,47 +56,75 @@
     username = "equiomax";
     homeDirectory = "/home/equiomax";
     packages = with pkgs; [
+      # terminal apps
+      du-dust
+      zellij
+      yt-dlp
+      ripgrep
       
+      # productivity
+      logseq
+      calibre
+
+      # gaming
+      lutris
+
+      # nix
+      nil
+            
+      # rust
+      rust-analyzer
     ];
   };
 
+  home.sessionVariables.EDITOR = "hx";
   # Add stuff for your user as you see fit:
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "onedark";
-      editor = {
-        cursorline = true;
-        bufferline = "multiple";
-        indent-guides.render = true;
+
+  programs = {
+    bat.enable = true;
+    zoxide.enable = true;
+    zellij = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+  
+    helix = {
+      enable = true;
+      settings = {
+        theme = "onedark";
+        editor = {
+          cursorline = true;
+          bufferline = "multiple";
+          indent-guides.render = true;
+        };
       };
     };
-  };
 
-  home.sessionVariables.EDITOR = "hx";
 
-  programs.zsh = {
-    enable = true;
-    # syntaxHighlighting.enable = true;
-  };
+    zsh = {
+      enable = true;
+      # syntaxHighlighting.enable = true;
+    };
 
-  programs.bash.enable = true;
+    bash.enable = true;
 
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    settings = pkgs.lib.importTOML ./starship.toml;
-  };
+    starship = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      settings = pkgs.lib.importTOML ./starship.toml;
+    };
 
-  programs.mpv.enable = true;
+    mpv.enable = true;
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userName = "Amit Chauhan";
-    userEmail = "aschauhan@tutanota.com";
+    # Enable home-manager and git
+    home-manager.enable = true;
+    git = {
+      enable = true;
+      userName = "Amit Chauhan";
+      userEmail = "aschauhan@tutanota.com";
+    };
   };
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
