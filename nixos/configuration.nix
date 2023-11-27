@@ -77,10 +77,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
 
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
   time.timeZone = "Asia/Kolkata";
   
   i18n.defaultLocale = "en_IN";
@@ -95,6 +91,30 @@
     LC_PAPER = "en_IN";
     LC_TELEPHONE = "en_IN";
     LC_TIME = "en_IN";
+  };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
+    forceFullCompositionPipeline = true;
+    open = false;
+    nvidiaSettings = true;
+    nvidiaPersistenced = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      amdgpuBusId = "PCI:6:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   programs.zsh.enable = true;
@@ -129,10 +149,12 @@
   # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
-    # Forbid root login through SSH.
-    permitRootLogin = "no";
-    # Use keys only. Remove if you want to SSH using password (not recommended)
-    passwordAuthentication = false;
+    settings = {
+      # Forbid root login through SSH.
+      PermitRootLogin = "no";
+      # Use keys only. Remove if you want to SSH using password (not recommended)
+      PasswordAuthentication = false;
+    };
   };
 
   networking.networkmanager.enable = true;
@@ -142,6 +164,11 @@
     displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
   };
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
+  services.supergfxd.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -155,6 +182,8 @@
 
   programs.dconf.enable = true;
   programs.steam.enable = true;
+  programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
 
   programs.firefox = {
     enable = true;
@@ -172,5 +201,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
