@@ -63,12 +63,14 @@
       ripgrep
       bottom
       macchina
+      alacritty
       
       # productivity
       logseq
       calibre
       docker-compose
       qbittorrent-qt5
+      bitwarden
 
       # gaming
       mangohud

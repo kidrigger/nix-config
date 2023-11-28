@@ -215,6 +215,11 @@
     jack.enable = true;
   };
 
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
+
   virtualisation = {
     libvirtd.enable = true;
     docker = {
@@ -230,6 +235,9 @@
   environment.systemPackages = with pkgs; [
      # nur.repos.nltch.spotify-adblock    #for installing spotify-adblock
     spotify-adblock
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
