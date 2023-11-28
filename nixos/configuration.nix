@@ -47,6 +47,13 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+      # packageOverrides = pkgs: {
+      #   nur = import (builtins.fetchTarball {
+      #     url = "https://github.com/nix-community/NUR/archive/master.tar.gz"; 
+      #     sha256 = "0plki2yk02zcvyw7vynqhag6g1kl5qcicj8dvzfjx5p3p82yilkk"; }) {
+      #     inherit pkgs;
+      #   };
+      # };
     };
   };
 
@@ -70,7 +77,13 @@
   # FIXME: Add the rest of your current configuration
 
   # TODO: Set your hostname
-  networking.hostName = "equiomax-g15";
+  networking = {
+    hostName = "equiomax-g15";
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [80 443 8096];
+    };
+  };
 
   # TODO: This is just an example, be sure to use whatever bootloader you prefer
   boot.loader.systemd-boot.enable = true;
@@ -213,6 +226,11 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+     # nur.repos.nltch.spotify-adblock    #for installing spotify-adblock
+    spotify-adblock
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";

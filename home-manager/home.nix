@@ -67,9 +67,12 @@
       # productivity
       logseq
       calibre
+      docker-compose
+      qbittorrent-qt5
 
       # gaming
       mangohud
+      wine-staging
       lutris
 
       # nix
