@@ -63,7 +63,6 @@
       ripgrep
       bottom
       macchina
-      alacritty
       
       # productivity
       logseq
@@ -74,8 +73,6 @@
 
       # gaming
       mangohud
-      wine-staging
-      lutris
 
       # nix
       nil
@@ -105,6 +102,15 @@
           cursorline = true;
           bufferline = "multiple";
           indent-guides.render = true;
+        };
+      };
+    };
+
+    alacritty = {
+      enable = true;
+      settings = {
+        window = {
+          opacity = 0.9;
         };
       };
     };

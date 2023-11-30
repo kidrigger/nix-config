@@ -238,6 +238,17 @@
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
+    filelight
+    wineWowPackages.staging
+    winetricks
+    (lutris.override {
+      extraLibraries = pkgs: [
+        
+      ];
+      extraPkgs = pkgs: [
+        
+      ];
+    })
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
