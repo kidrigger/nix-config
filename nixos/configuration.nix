@@ -232,6 +232,8 @@
     };
   };
 
+  chaotic.hdr.enable = true;
+
   environment.systemPackages = with pkgs; [
      # nur.repos.nltch.spotify-adblock    #for installing spotify-adblock
     spotify-adblock
@@ -249,6 +251,8 @@
         
       ];
     })
+    calibre
+    proton-ge-custom
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

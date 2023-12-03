@@ -66,7 +66,6 @@
       
       # productivity
       logseq
-      calibre
       docker-compose
       qbittorrent-qt5
       bitwarden
@@ -118,7 +117,8 @@
 
     zsh = {
       enable = true;
-      # syntaxHighlighting.enable = true;
+      enableAutosuggestions = true;
+      syntaxHighlighting.enable = true;
     };
 
     bash.enable = true;

@@ -16,7 +16,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/cb73db66-e86f-4031-8b34-f3175ad71354";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "compress-force=zstd:1" "noatime" "space_cache=v2"];
     };
 
   boot.initrd.luks.devices."luks-6d0342f6-86fa-4771-81c8-59d98635427b".device = "/dev/disk/by-uuid/6d0342f6-86fa-4771-81c8-59d98635427b";
