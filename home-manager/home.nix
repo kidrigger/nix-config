@@ -118,7 +118,16 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
-      syntaxHighlighting.enable = true;
+      # syntaxHighlighting.enable = true;
+      plugins = [{
+        name = "fast-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zdharma-continuum";
+          repo = "fast-syntax-highlighting";
+          rev = "v1.55";
+          sha256 = "DWVFBoICroKaKgByLmDEo4O+xo6eA8YO792g8t8R7kA=";
+        };
+      }];
     };
 
     bash.enable = true;
