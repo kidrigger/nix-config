@@ -167,6 +167,7 @@
       PermitRootLogin = "no";
       # Use keys only. Remove if you want to SSH using password (not recommended)
       PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
     };
   };
 
@@ -240,6 +241,9 @@
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
+    typst
+    typstfmt
+    typst-lsp
     filelight
     wineWowPackages.staging
     winetricks
@@ -251,6 +255,7 @@
         
       ];
     })
+    croc
     calibre
     proton-ge-custom
   ];

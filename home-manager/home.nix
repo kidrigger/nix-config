@@ -69,6 +69,7 @@
       docker-compose
       qbittorrent-qt5
       bitwarden
+      protonvpn-gui
 
       # gaming
       mangohud
@@ -76,8 +77,9 @@
       # nix
       nil
             
-      # rust
+      # langs
       rust-analyzer
+      libclang
     ];
   };
 
@@ -104,6 +106,8 @@
         };
       };
     };
+
+    vscode.enable = true;
 
     alacritty = {
       enable = true;
