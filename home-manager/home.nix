@@ -48,6 +48,10 @@
         "steam-run"
         "steam-original"
       ];
+
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+      ];
     };
   };
 

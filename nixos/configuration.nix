@@ -250,7 +250,7 @@
     typstfmt
     typst-lsp
     filelight
-    plasma-vault
+    # plasma-vault
     wineWowPackages.staging
     winetricks
     (lutris.override {
