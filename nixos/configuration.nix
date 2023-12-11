@@ -112,6 +112,11 @@
     driSupport32Bit = true;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -245,6 +250,7 @@
     typstfmt
     typst-lsp
     filelight
+    plasma-vault
     wineWowPackages.staging
     winetricks
     (lutris.override {

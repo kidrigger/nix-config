@@ -69,7 +69,6 @@
       docker-compose
       qbittorrent-qt5
       bitwarden
-      protonvpn-gui
 
       # gaming
       mangohud
