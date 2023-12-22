@@ -246,9 +246,9 @@
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
-    typst
-    typstfmt
-    typst-lsp
+    # typst
+    # typstfmt
+    # typst-lsp
     filelight
     # plasma-vault
     wineWowPackages.staging
