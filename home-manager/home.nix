@@ -76,6 +76,7 @@
 
       # gaming
       mangohud
+      prismlauncher
 
       # nix
       nil
