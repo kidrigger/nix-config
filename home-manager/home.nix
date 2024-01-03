@@ -67,12 +67,14 @@
       ripgrep
       bottom
       macchina
+      delta
       
       # productivity
       logseq
       docker-compose
       qbittorrent-qt5
       bitwarden
+      foliate
 
       # gaming
       mangohud
@@ -118,6 +120,9 @@
       settings = {
         window = {
           opacity = 0.9;
+        };
+        font = {
+          size = 9;
         };
       };
     };
