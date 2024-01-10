@@ -11,7 +11,7 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
