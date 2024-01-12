@@ -72,7 +72,7 @@
       # productivity
       logseq
       docker-compose
-      qbittorrent-qt5
+      qbittorrent
       bitwarden
       foliate
 
