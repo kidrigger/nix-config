@@ -205,6 +205,7 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
   programs.virt-manager.enable = true;
+  programs.kdeconnect.enable = true;
 
   programs.firefox = {
     enable = true;
