@@ -189,15 +189,21 @@
     enableUserService = true;
   };
   services.supergfxd.enable = true;
+  services.caddy = {
+    enable = true;
+    virtualHosts."jellyfin.eqmx.in".extraConfig = ''
+      reverse_proxy 127.0.0.1:8096
+    '';
+  };
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
+    # extraPortals = with pkgs; [
       # xdg-desktop-portal-kde
-    ];
+    # ];
   };
 
   programs.dconf.enable = true;
