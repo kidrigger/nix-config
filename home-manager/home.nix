@@ -79,6 +79,7 @@
       # gaming
       mangohud
       prismlauncher
+      superTuxKart
 
       # nix
       nil
