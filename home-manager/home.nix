@@ -47,6 +47,7 @@
         "steam"
         "steam-run"
         "steam-original"
+        "discord-canary"
       ];
 
       permittedInsecurePackages = [
@@ -71,6 +72,7 @@
       
       # productivity
       logseq
+      discord-canary
       docker-compose
       qbittorrent
       bitwarden

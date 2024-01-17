@@ -89,6 +89,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernel.sysctl = { "vm.swappiness" = 0; };
 
   time.timeZone = "Asia/Kolkata";
   
@@ -245,14 +247,14 @@
     };
   };
 
-  chaotic.hdr.enable = true;
+  # chaotic.hdr.enable = true;
 
   environment.systemPackages = with pkgs; [
      # nur.repos.nltch.spotify-adblock    #for installing spotify-adblock
     spotify-adblock
     jellyfin
     jellyfin-web
-    jellyfin-ffmpeg
+    # jellyfin-ffmpeg
     # typst
     # typstfmt
     # typst-lsp
@@ -270,6 +272,9 @@
     })
     croc
     calibre
+    dwarfs
+    fuse-overlayfs
+    unar
     proton-ge-custom
   ];
 
