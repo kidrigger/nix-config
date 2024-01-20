@@ -179,23 +179,46 @@
   };
 
   networking.networkmanager.enable = true;
-  
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-    displayManager.sddm.enable = true;
-    desktopManager.plasma6.enable = true;
-  };
-  services.asusd = {
-    enable = true;
-    enableUserService = true;
-  };
-  services.supergfxd.enable = true;
-  services.caddy = {
-    enable = true;
-    virtualHosts."jellyfin.eqmx.in".extraConfig = ''
-      reverse_proxy 127.0.0.1:8096
-    '';
+
+  services = {
+    xserver = {
+      enable = true;
+      videoDrivers = ["nvidia"];
+      displayManager.sddm.enable = true;
+      desktopManager.plasma6.enable = true;
+    };
+    
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+    
+    supergfxd.enable = true;
+    
+    caddy = {
+      enable = true;
+      virtualHosts."jellyfin.eqmx.in".extraConfig = ''
+        reverse_proxy 127.0.0.1:8096
+      '';
+    };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+
+    jellyfin = {
+      enable = true;
+      openFirewall = true;
+    };
+
+    earlyoom = {
+      enable = true;
+      enableNotifications = true;
+    };
   };
 
   sound.enable = true;
@@ -222,18 +245,6 @@
     };
   };
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-  };
 
   virtualisation = {
     libvirtd.enable = true;
