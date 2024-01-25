@@ -71,6 +71,7 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+      max-jobs = 1;
     };
   };
 
