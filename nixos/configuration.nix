@@ -290,6 +290,16 @@
     proton-ge-custom
   ];
 
+  environment.etc = {
+  "pipewire/pipewire.conf.d/20-pulse-properties.conf".text = ''
+    pulse.properties = {
+      pulse.min.req = 256/48000
+      pulse.min.frag = 256/48000
+      pulse.min.quantum = 256/48000
+    }
+  '';
+};
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
 }
