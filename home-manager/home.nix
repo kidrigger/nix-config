@@ -69,6 +69,14 @@
       bottom
       macchina
       delta
+      bacon
+      broot
+      mprocs
+      gitui
+      tokei
+      eza
+      ouch
+      gitoxide
       
       # productivity
       logseq
@@ -97,11 +105,28 @@
 
   programs = {
     bat.enable = true;
-    zoxide.enable = true;
+    zoxide = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    yazi = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
     zellij = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+    };
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+    };
+    carapace = {
+      enable = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
     };
   
     helix = {
@@ -134,7 +159,6 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
-      # syntaxHighlighting.enable = true;
       plugins = [{
         name = "fast-syntax-highlighting";
         src = pkgs.fetchFromGitHub {
@@ -147,11 +171,17 @@
     };
 
     bash.enable = true;
+    
+    nushell = {
+      enable = true;
+      
+    };
 
     starship = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
       settings = pkgs.lib.importTOML ./starship.toml;
     };
 

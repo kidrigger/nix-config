@@ -248,6 +248,7 @@
   programs.gamescope.enable = true;
   programs.virt-manager.enable = true;
   programs.kdeconnect.enable = true;
+  programs.yazi.enable = true;
 
   programs.firefox = {
     enable = true;
@@ -276,12 +277,7 @@
     spotify-adblock
     jellyfin
     jellyfin-web
-    # jellyfin-ffmpeg
-    # typst
-    # typstfmt
-    # typst-lsp
     filelight
-    # plasma-vault
     wineWowPackages.staging
     winetricks
     (lutris.override {
