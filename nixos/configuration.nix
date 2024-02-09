@@ -73,6 +73,12 @@
       auto-optimise-store = true;
       max-jobs = 1;
     };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1w";
+    };
   };
 
   # FIXME: Add the rest of your current configuration
@@ -82,7 +88,8 @@
     hostName = "equiomax-g15";
     firewall = {
       enable = true;
-      allowedTCPPorts = [80 443 8096];
+      allowedTCPPorts = [80 443 8096 8080];
+      allowedUDPPorts = [8080 51820];
     };
   };
 
@@ -200,6 +207,9 @@
       enable = true;
       virtualHosts."jellyfin.eqmx.in".extraConfig = ''
         reverse_proxy 127.0.0.1:8096
+      '';
+      virtualHosts."calibre.eqmx.in".extraConfig = ''
+        reverse_proxy 127.0.0.1:8080
       '';
     };
 
