@@ -68,7 +68,6 @@
       ripgrep
       bottom
       macchina
-      delta
       bacon
       broot
       mprocs
@@ -85,6 +84,7 @@
       qbittorrent
       bitwarden
       foliate
+      lapce
 
       # gaming
       mangohud
@@ -193,6 +193,7 @@
       enable = true;
       userName = "Amit Chauhan";
       userEmail = "aschauhan@tutanota.com";
+      delta.enable = true;
     };
   };
   # Nicely reload system units when changing configs
