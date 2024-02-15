@@ -63,8 +63,6 @@
     packages = with pkgs; [
       # terminal apps
       du-dust
-      zellij
-      yt-dlp
       ripgrep
       bottom
       macchina
@@ -104,25 +102,59 @@
   # Add stuff for your user as you see fit:
 
   programs = {
-    bat.enable = true;
+    bat = {
+      enable = true;
+      config = {
+        theme = "TwoDark";
+      };
+    };
+
     zoxide = {
       enable = true;
       enableNushellIntegration = true;
     };
+
     yazi = {
       enable = true;
       enableNushellIntegration = true;
     };
+
     zellij = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      settings = {
+        theme = "one-dark";
+        default_shell = "nu";
+        ui = {
+          pane_frames = {
+            rounded_corners = true;
+          };
+        };
+        themes = {
+          one-dark = {
+            fg = "#DCDFE4";
+            bg = "#282C34";
+            yellow = "#E5C07B";
+            blue = "#61AFEF";
+            red = "#E33F4C";
+            magenta = "#C678DD";
+            green = "#98C379";
+            orange = "#D8854C";
+            cyan = "#56B6C2";
+            white = "#E9E1FE";
+            black = "#1B1D23";
+          };
+        };
+      };
     };
+
     atuin = {
       enable = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
     };
+
     carapace = {
       enable = true;
       enableZshIntegration = true;
@@ -137,6 +169,20 @@
           cursorline = true;
           bufferline = "multiple";
           indent-guides.render = true;
+          completion-replace = true;
+          color-modes = true;
+          file-picker = {
+            hidden = false;
+          };
+          lsp = {
+            display-messages = true;
+            display-inlay-hints = true;
+          };
+          cursor-shape = {
+            insert = "bar";
+            normal = "block";
+            select = "underline";
+          };
         };
       };
     };
@@ -155,7 +201,6 @@
       };
     };
 
-
     zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -171,11 +216,7 @@
     };
 
     bash.enable = true;
-    
-    nushell = {
-      enable = true;
-      
-    };
+    nushell.enable = true;
 
     starship = {
       enable = true;
@@ -193,7 +234,7 @@
       enable = true;
       userName = "Amit Chauhan";
       userEmail = "aschauhan@tutanota.com";
-      delta.enable = true;
+      difftastic.enable = true;
     };
   };
   # Nicely reload system units when changing configs
