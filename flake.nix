@@ -14,10 +14,10 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    # Plasma 6 Release Candidate
     kde2nix.url = "github:nix-community/kde2nix";
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -25,10 +25,6 @@
 
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
@@ -43,7 +39,6 @@
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
-      "i686-linux"
       "x86_64-linux"
       "aarch64-darwin"
       "x86_64-darwin"
@@ -71,12 +66,21 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
-      equiomax-g15 = nixpkgs.lib.nixosSystem {
+      # TODO add block with your hostname
+      eqmx-g15 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./nixos/configuration.nix
+          ./nixos/hosts/g15.nix
+          chaotic.nixosModules.default
+          inputs.kde2nix.nixosModules.default
+        ];
+      };
+      eqmx-pc = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/hosts/pc.nix
           chaotic.nixosModules.default
           inputs.kde2nix.nixosModules.default
         ];

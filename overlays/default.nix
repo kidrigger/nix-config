@@ -11,7 +11,7 @@
     # ...
     # });
     mpv = prev.mpv.override {
-      scripts = [ final.mpvScripts.mpris ];
+      scripts = [final.mpvScripts.mpris];
     };
   };
 
