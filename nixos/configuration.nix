@@ -165,6 +165,10 @@
     };
   };
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = ["FiraCode"]; })
+  ];
+
 
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs; };
@@ -278,6 +282,7 @@
     jellyfin
     jellyfin-web
     filelight
+    thunderbird
     wineWowPackages.staging
     winetricks
     (lutris.override {

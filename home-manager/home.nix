@@ -56,6 +56,22 @@
     };
   };
 
+  accounts.email.accounts = {
+    gmail = {
+      primary = true;
+      address = "aschauhan017@gmail.com";
+      thunderbird.enable = true;
+      realName = "Amit Chauhan";
+    };
+
+    bitsgmail = {
+      primary = false;
+      address = "f20180196g@alumni.bits-pilani.ac.in";
+      thunderbird.enable = true;
+      realName = "Amit Chauhan";
+    };
+  };
+
   # TODO: Set your username
   home = {
     username = "equiomax";
@@ -187,7 +203,7 @@
       };
     };
 
-    vscode.enable = true;
+    # thunderbird.enable = true;
 
     alacritty = {
       enable = true;
