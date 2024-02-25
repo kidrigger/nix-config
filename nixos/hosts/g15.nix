@@ -152,6 +152,11 @@
       extraPkgs = pkgs: [
       ];
     })
+    (retroarch.override {
+      cores = with libretro; [
+      mgba
+      ];
+    })
     croc
     calibre
     dwarfs
