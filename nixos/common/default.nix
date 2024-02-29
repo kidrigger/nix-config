@@ -158,4 +158,12 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    foot
+    nushell
+    fish
+    xplr
+    sbcl
+  ]
 }
