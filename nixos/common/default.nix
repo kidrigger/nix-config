@@ -76,6 +76,8 @@
     };
   };
 
+  # Set your time zone.
+  time.timeZone = "Europe/Paris";
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
