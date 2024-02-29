@@ -29,27 +29,27 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     yazi = {
       enable = true;
       enableZshIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
     };
 
     zellij = {
-      enable = false; # true;
+      enable = true;
       enableBashIntegration = true;
-      enableZshIntegration = true;
+      # enableZshIntegration = true;
       settings = {
         theme = "one-dark";
         default_shell = "nu";
@@ -79,14 +79,14 @@
     carapace = {
       enable = true;
       enableZshIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     helix = {
       enable = true;
       settings = {
-        theme = "base16_terminal";
+        theme = "base16_transparent";
         editor = {
           cursorline = true;
           bufferline = "multiple";
@@ -135,20 +135,6 @@
       };
     };
 
-    foot = {
-      enable = true;
-      settings = {
-        main = {
-          font = "FiraCode Nerd Font:size=12";
-          # font-bold = "FiraCode Nerd Font:size=12";
-          # font-italic = "FiraCode Nerd Font:size=12";
-        };
-        colors = {
-          alpha = 0.9;
-        };
-      };
-    };
-
     zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -166,14 +152,17 @@
     };
 
     bash.enable = true;
-    nushell.enable = true;
-    fish.enable = true;
+    nushell = {
+      enable = true;
+      configFile.source = ./nushell.nu;
+    };
+    # fish.enable = true;
 
     starship = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
       enableNushellIntegration = true;
       settings = pkgs.lib.importTOML ./starship.toml;
     };
@@ -182,7 +171,15 @@
     git = {
       enable = true;
       difftastic.enable = true;
+      aliases = {
+        co = "checkout";
+        st = "status";
+        b = "branch";     
+      };
+    };
 
+    jujutsu = {
+      enable = true;
     };
   };
 }

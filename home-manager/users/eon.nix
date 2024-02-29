@@ -100,6 +100,10 @@
       userName = "kidrigger";
       userEmail = "rex16saddler@gmail.com";
     };
+    jujutsu.settings.user = {
+      name = "kidrigger";
+      email = "rex16saddler@gmail.com";  
+    };
     home-manager.enable = true;
   };
   # Nicely reload system units when changing configs
