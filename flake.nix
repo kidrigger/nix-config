@@ -18,7 +18,7 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # Plasma 6 Release Candidate
-    kde2nix.url = "github:nix-community/kde2nix";
+#    kde2nix.url = "github:nix-community/kde2nix";
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -73,22 +73,22 @@
           # > Our main nixos configuration file <
           ./nixos/hosts/beast.nix
           chaotic.nixosModules.default
-          inputs.kde2nix.nixosModules.default
+          # inputs.kde2nix.nixosModules.default
         ];
       };
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "eon@beast" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/eon-beast.nix
-        ];
-      };
-    };
+    # homeConfigurations = {
+    #   "eon@beast" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+    #     extraSpecialArgs = {inherit inputs outputs;};
+    #     modules = [
+    #       # > Our main home-manager configuration file <
+    #       ./home-manager/eon-beast.nix
+    #     ];
+    #   };
+    # };
   };
 }

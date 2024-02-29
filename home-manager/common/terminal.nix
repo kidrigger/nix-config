@@ -1,18 +1,18 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # terminal apps
-    du-dust
+    ## terminal apps
+    # du-dust
     ripgrep
     bottom
-    macchina
-    bacon
-    broot
-    mprocs
-    gitui
-    tokei
+    # macchina
+    # bacon
+    # broot
+    # mprocs
+    # gitui
+    # tokei
     eza
-    ouch
-    gitoxide
+    # ouch
+    # gitoxide
 
     #nix
     nil
@@ -28,16 +28,26 @@
 
     zoxide = {
       enable = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     yazi = {
       enable = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
-    zellij = {
+    fzf = {
       enable = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+    };
+
+    zellij = {
+      enable = false; # true;
       enableBashIntegration = true;
       enableZshIntegration = true;
       settings = {
@@ -66,22 +76,17 @@
       };
     };
 
-    atuin = {
-      enable = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-    };
-
     carapace = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     helix = {
       enable = true;
       settings = {
-        theme = "onedark";
+        theme = "base16_terminal";
         editor = {
           cursorline = true;
           bufferline = "multiple";
@@ -130,6 +135,20 @@
       };
     };
 
+    foot = {
+      enable = true;
+      settings = {
+        main = {
+          font = "FiraCode Nerd Font:size=12";
+          # font-bold = "FiraCode Nerd Font:size=12";
+          # font-italic = "FiraCode Nerd Font:size=12";
+        };
+        colors = {
+          alpha = 0.9;
+        };
+      };
+    };
+
     zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -148,11 +167,13 @@
 
     bash.enable = true;
     nushell.enable = true;
+    fish.enable = true;
 
     starship = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       enableNushellIntegration = true;
       settings = pkgs.lib.importTOML ./starship.toml;
     };
@@ -161,6 +182,7 @@
     git = {
       enable = true;
       difftastic.enable = true;
+
     };
   };
 }
