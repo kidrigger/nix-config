@@ -24,8 +24,8 @@
         ];
         RUSTFLAGS = "-Clink-arg=-fuse-ld=mold";
         shellHook = ''
-          echo "Welcome to Chauhan's Rust Development Shell"
-          exec nu
+          echo "Welcome to Eon's Rust Development Shell"
+          # exec nu
         '';
       };
     });

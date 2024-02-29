@@ -60,37 +60,30 @@
   accounts.email.accounts = {
     gmail = {
       primary = true;
-      address = "aschauhan017@gmail.com";
+      address = "rex16saddler@gmail.com";
       thunderbird.enable = true;
-      realName = "Amit Chauhan";
+      realName = "Anish Bhobe";
     };
 
-    bitsgmail = {
+    profgmail = {
       primary = false;
-      address = "f20180196g@alumni.bits-pilani.ac.in";
+      address = "bhobeanishp@gmail.com";
       thunderbird.enable = true;
-      realName = "Amit Chauhan";
+      realName = "Anish Bhobe";
     };
   };
 
   # TODO: Set your username
   home = {
-    username = "equiomax";
-    homeDirectory = "/home/equiomax";
+    username = "eon";
+    homeDirectory = "/home/eon";
     packages = with pkgs; [
       # productivity
-      logseq
       discord-canary
-      docker-compose
-      qbittorrent
       bitwarden
-      foliate
-      lapce
 
       # gaming
       mangohud
-      prismlauncher
-      superTuxKart
 
       # langs
       rust-analyzer
@@ -104,8 +97,8 @@
   programs = {
     mpv.enable = true;
     git = {
-      userName = "Amit Chauhan";
-      userEmail = "aschauhan@tutanota.com";
+      userName = "kidrigger";
+      userEmail = "rex16saddler@gmail.com";
     };
     home-manager.enable = true;
   };

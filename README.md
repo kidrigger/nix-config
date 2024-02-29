@@ -1,4 +1,4 @@
-# Chauhan's Nix Config
+# Bob's Nix Config
 
 - 
 

@@ -1,5 +1,5 @@
 {
-  description = "Chauhan's Nix Config";
+  description = "Bob's Nix Config";
 
   nixConfig = {
     extra-substituters = [
@@ -67,20 +67,11 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # TODO add block with your hostname
-      eqmx-g15 = nixpkgs.lib.nixosSystem {
+      beast = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./nixos/hosts/g15.nix
-          chaotic.nixosModules.default
-          inputs.kde2nix.nixosModules.default
-        ];
-      };
-      eqmx-pc = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main nixos configuration file <
-          ./nixos/hosts/pc.nix
+          ./nixos/hosts/beast.nix
           chaotic.nixosModules.default
           inputs.kde2nix.nixosModules.default
         ];
@@ -89,16 +80,15 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    #homeConfigurations = {
-    #  # FIXME replace with your username@hostname
-    #  "equiomax@equiomax-g15" = home-manager.lib.homeManagerConfiguration {
-    #    pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-    #    extraSpecialArgs = {inherit inputs outputs;};
-    #    modules = [
-    #      # > Our main home-manager configuration file <
-    #      ./home-manager/home-eqmx.nix
-    #    ];
-    #  };
-    #};
+    homeConfigurations = {
+      "eon@beast" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home-manager/eon-beast.nix
+        ];
+      };
+    };
   };
 }
