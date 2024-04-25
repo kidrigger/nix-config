@@ -1,18 +1,19 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     ## terminal apps
-    # du-dust
+    du-dust
+    eza
     ripgrep
     bottom
-    # macchina
     # bacon
-    # broot
+    broot
     # mprocs
     # gitui
-    # tokei
-    eza
-    # ouch
+    tokei
+    ouch
     # gitoxide
+    tree
+    neofetch
 
     #nix
     nil
@@ -29,27 +30,24 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
-      # enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     yazi = {
       enable = true;
       enableZshIntegration = true;
-      # enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      # enableFishIntegration = true;
     };
 
     zellij = {
       enable = true;
       enableBashIntegration = true;
-      # enableZshIntegration = true;
+      enableZshIntegration = true;
       settings = {
         theme = "one-dark";
         default_shell = "nu";
@@ -79,7 +77,6 @@
     carapace = {
       enable = true;
       enableZshIntegration = true;
-      # enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
@@ -116,6 +113,12 @@
       settings = {
         window = {
           opacity = 0.9;
+        };
+        shell = {
+          program = "zsh";
+          args = [
+            "-l" "-c" "zellij"
+          ];
         };
         font = {
           normal = {
@@ -156,30 +159,13 @@
       enable = true;
       configFile.source = ./nushell.nu;
     };
-    # fish.enable = true;
 
     starship = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
-      # enableFishIntegration = true;
       enableNushellIntegration = true;
       settings = pkgs.lib.importTOML ./starship.toml;
-    };
-
-    # Enable home-manager and git
-    git = {
-      enable = true;
-      difftastic.enable = true;
-      aliases = {
-        co = "checkout";
-        st = "status";
-        b = "branch";     
-      };
-    };
-
-    jujutsu = {
-      enable = true;
     };
   };
 }

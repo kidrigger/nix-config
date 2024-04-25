@@ -148,6 +148,14 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    fuse-overlayfs
+    wget
+    helix
+    git
+    lshw
+  ];
+
   programs = {
     dconf.enable = true;
     # kdeconnect.enable = true;
