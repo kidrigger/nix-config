@@ -1,0 +1,3 @@
+[submodule "home-manager/common/emacs"]
+	path = home-manager/common/emacs
+	url = git@github.com:kidrigger/dotemacs.git
