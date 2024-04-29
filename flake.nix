@@ -3,10 +3,13 @@
 
   nixConfig = {
     extra-substituters = [
+      "https://cache.nixos.org"
+      "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 
@@ -15,16 +18,20 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    # Plasma 6 Release Candidate
-#    kde2nix.url = "github:nix-community/kde2nix";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
+
+    # Hyprland!
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -72,23 +79,11 @@
         modules = [
           # > Our main nixos configuration file <
           ./nixos/hosts/beast.nix
-          chaotic.nixosModules.default
-          # inputs.kde2nix.nixosModules.default
+          {
+            nix.settings.trusted-users = [ "eon" ];
+          }
         ];
       };
     };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    # homeConfigurations = {
-    #   "eon@beast" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-    #     extraSpecialArgs = {inherit inputs outputs;};
-    #     modules = [
-    #       # > Our main home-manager configuration file <
-    #       ./home-manager/eon-beast.nix
-    #     ];
-    #   };
-    # };
   };
 }
