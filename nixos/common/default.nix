@@ -39,16 +39,6 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -65,14 +55,8 @@
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "Nix";
       isNormalUser = true;
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "networkmanager" "docker"];
     };
   };
 
@@ -90,32 +74,6 @@
     kernel.sysctl = {"vm.swappiness" = 0;};
   };
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vulkan-loader
-        vulkan-validation-layers
-        vulkan-extension-layer
-      ];
-    };
-    pulseaudio.enable = false;
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-  };
-
-  networking.networkmanager.enable = true;
-
-  sound.enable = true;
-  security.rtkit.enable = true;
-  xdg.portal = {
-    enable = true;
-  };
-
   services = {
     openssh = {
       enable = true;
@@ -127,49 +85,14 @@
         KbdInteractiveAuthentication = false;
       };
     };
-
-    xserver = {
-      enable = true;
-      displayManager.sddm.enable = true;
-      desktopManager.plasma6.enable = true;
-    };
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
-
-    earlyoom = {
-      enable = true;
-      enableNotifications = true;
-    };
-  };
-
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   environment.systemPackages = with pkgs; [
-    fuse-overlayfs
     wget
     helix
     git
     lshw
-    hyprpaper
   ];
 
-  programs = {
-    dconf.enable = true;
-    # kdeconnect.enable = true;
-    firefox = {
-      enable = true;
-      preferences = {
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-      };
-    };
-  };
+  environment.variables.EDITOR = "hx";
 }
