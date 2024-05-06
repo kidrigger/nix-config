@@ -50,7 +50,7 @@
     "$wham" = "CTRL + ALT + SUPER";
     monitor=",preferred,auto,1";
     general = {
-      gaps_in = 15;
+      gaps_in = 10;
       gaps_out = 20;
     };
     decoration = {
@@ -59,9 +59,11 @@
     bind =
     [
       "$mod, L, exec, hyprlock"
+      "$mod, Q, killactive,"
       "$wham, Q, exec, systemctl poweroff"
       "$wham, L, exec, hyprctl dispatch exit"
       "$mod, R, exec, wofi --show drun"
+      "$mod, E, exec, emacsclient -n -c -a \"\""
       "$mod, T, exec, alacritty"
     ]
     ++ (
