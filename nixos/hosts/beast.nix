@@ -31,23 +31,21 @@
     extraGroups = ["wheel" "networkmanager"];
   };
 
-  # TODO Bus ID
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   powerManagement.enable = true;
-  #   powerManagement.finegrained = true;
-  #   forceFullCompositionPipeline = true;
-  #   open = false;
-  #   nvidiaSettings = true;
-  #   nvidiaPersistenced = true;
-  #   prime = {
-  #     offload = {
-  #       enable = true;
-  #       enableOffloadCmd = true;
-  #     };
-  #     nvidiaBusId = # TODO "PCI:1:0:0";
-  #   };
-  # };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    forceFullCompositionPipeline = true;
+    open = false;
+    nvidiaSettings = true;
+    nvidiaPersistenced = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    prime = {
+      sync.enable = true;
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
+    };
+  };
   
   hardware = {
     opengl = {
@@ -80,8 +78,9 @@
       enable = true;
       displayManager.sddm.enable = true;
       desktopManager.plasma6.enable = true;
+      videoDrivers = [ "nvidia" ];
     };
-
+    
     pipewire = {
       enable = true;
       alsa.enable = true;
