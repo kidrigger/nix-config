@@ -18,10 +18,14 @@
   ];
 
   # Emacs
-  # TODO Add emacs nativecomp  
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-gtk;
+    package = pkgs.emacs-pgtk;
+  };
+  
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
   };
 
   home.file = {
@@ -29,6 +33,4 @@
     "${config.home.homeDirectory}/.config/emacs/early-init.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home-manager/common/emacs/early-init.el";      
     "${config.home.homeDirectory}/.config/emacs/config.org".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home-manager/common/emacs/config.org";
   };
-
-  # TODO Add emacs as a service.
 }
