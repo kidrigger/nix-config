@@ -74,18 +74,20 @@
     kernel.sysctl = {"vm.swappiness" = 0;};
   };
 
-  services = {
-    openssh = {
-      enable = true;
-      settings = {
+  services.xserver.xkb.layout = "us";
+
+  services.openssh = {
+    enable = true;
+    settings = {
         # Forbid root login through SSH.
         PermitRootLogin = "no";
         # Use keys only. Remove if you want to SSH using password (not recommended)
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
+        X11Forwarding = true;
       };
+      openFirewall = true;
     };
-  };
 
   environment.systemPackages = with pkgs; [
     wget

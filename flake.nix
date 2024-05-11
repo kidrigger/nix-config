@@ -37,7 +37,6 @@
   outputs = {
     self,
     nixpkgs,
-    chaotic,
     nixpkgs-unstable,
     home-manager,
     ...
@@ -79,6 +78,16 @@
         modules = [
           # > Our main nixos configuration file <
           ./nixos/hosts/beast.nix
+          {
+            nix.settings.trusted-users = [ "eon" ];
+          }
+        ];
+      };
+      wyvern = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/hosts/wyvern.nix
           {
             nix.settings.trusted-users = [ "eon" ];
           }
