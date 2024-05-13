@@ -20,7 +20,7 @@
     } ]; 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 3000 ];
+      allowedTCPPorts = [ 80 443 ];
     };
   };
 
@@ -70,6 +70,7 @@
     package = pkgs.gitea;
     user = "git";
     group = "git";
+    lfs.enable = true;
     settings = {
       server = {
         DOMAIN = "git.kidrigger.dev";
