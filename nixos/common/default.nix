@@ -93,6 +93,7 @@
     wget
     helix
     git
+    git-lfs
     lshw
   ];
 

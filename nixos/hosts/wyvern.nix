@@ -3,7 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { inputs, config, lib, pkgs, outputs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -21,7 +20,7 @@
     } ]; 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 ];
+      allowedTCPPorts = [ 80 443 3000 ];
     };
   };
 
@@ -34,12 +33,57 @@
     ];
   };
 
+  users.groups.git = {};
+  users.users.git = {
+    description = "Gitea default user";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    extraGroups = [ "git" ];
+  };
+
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs;};
     users = {
       eon = import ../../home-manager/users/eon-wyvern.nix;
     };
   };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts."git.kidrigger.dev" = {
+      forceSSL = true;
+      enableACME = true;
+      extraConfig = ''
+        client_max_body_size 512M;
+      '';
+      locations."/".proxyPass = "http://127.0.0.1:3000/";
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "contact@kidrigger.dev";
+  };
+
+  services.gitea = {
+    enable = true;
+    package = pkgs.gitea;
+    user = "git";
+    group = "git";
+    settings = {
+      server = {
+        DOMAIN = "git.kidrigger.dev";
+        ROOT_URL = "https://git.kidrigger.dev/";
+        HTTP_PORT = 3000;
+      };
+      service.DISABLE_REGISTRATION = true;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    gitea
+    nginx
+  ];
 
   system.stateVersion = "23.11"; # Did you read the comment?
 
