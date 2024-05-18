@@ -95,6 +95,9 @@
     git
     git-lfs
     lshw
+
+    # TODO: GUI Only, refactor    
+    libayatana-appindicator
   ];
 
   environment.variables.EDITOR = "hx";
