@@ -49,26 +49,13 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
       settings = {
-        theme = "one-dark";
+        theme = "catppuccin-mocha";
         default_shell = "nu";
+        default_layout = "compact";
+        pane_frames = false;
         ui = {
           pane_frames = {
             rounded_corners = true;
-          };
-        };
-        themes = {
-          one-dark = {
-            fg = "#DCDFE4";
-            bg = "#282C34";
-            yellow = "#E5C07B";
-            blue = "#61AFEF";
-            red = "#E33F4C";
-            magenta = "#C678DD";
-            green = "#98C379";
-            orange = "#D8854C";
-            cyan = "#56B6C2";
-            white = "#E9E1FE";
-            black = "#1B1D23";
           };
         };
       };
