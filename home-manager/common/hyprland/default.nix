@@ -13,9 +13,10 @@
       settings = {
         mainBar = {
           modules-left = [
+            "clock"
             "hyprland/workspaces"
             "hyprland/mode"
-#            "wlr/taskbar"
+            # "wlr/taskbar"
           ];
           modules-center = [
             "hyprland/window"
@@ -23,18 +24,17 @@
           modules-right = [
             # "mpd"
             # "idle_inhibitor"
-            # "pulseaudio"
-            # "network"
             # "power-profiles-daemon"
+            "tray"
             "cpu"
             "memory"
             "temperature"
             # "backlight"
             # "keyboard-state"
-            "hyprland/language"
+            # "hyprland/language"
             "battery"
-            "clock"
-            # "tray"
+            "pulseaudio"
+            "network"
           ];
         };
         "wlr/taskbar" = {
@@ -47,7 +47,7 @@
   
   wayland.windowManager.hyprland.settings = {
     "$mod" = "ALT";
-    "$wham" = "CTRL + ALT + SUPER";
+    "$wham" = "CTRL + ALT";
     monitor=",preferred,auto,1";
     general = {
       gaps_in = 10;
